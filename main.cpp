@@ -145,10 +145,10 @@ int adminL()
     while(!outfile.eof())
     {
         outfile >> line;
-        for(int i{0}; i < 7; i++)
+        for(int i = 0; i < 7; i++)
         {
             usr = ps;
-            index = line.find(",",index,line.size());
+            index = line.find(",",index,line.length());
             sbstr = line.substr(old,index);
             old = index; sbstr = ps;
             cout << endl << usr << "   " << ps << endl;
