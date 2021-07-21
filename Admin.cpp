@@ -48,7 +48,7 @@ class Admin
             infile.open("Admin.txt", ios::out|ios::ate);
             if(!infile) { cout << "Unable to Open Admins File.\n"; return 0;}
             else{
-                infile << id << "," << name << "," << age << "," << email << "," << phone << endl;
+                infile << id << "," << name << "," << age << "," << email << "," << phone << ","<< username << "," << pass << endl;
                 return 1;
             }
         }

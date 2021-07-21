@@ -6,7 +6,9 @@ using namespace std;
 
 int welcome();
 int home();
-int regusr(); int regadmin(); int regdoc(); int regpat();
+int frgt();
+int regadmin(); int regdoc(); int regpat();
+int regusr(); 
 int login();
 int adminL();
 int docL(); int patL();
@@ -32,7 +34,18 @@ int home()
 {
     cout << "1)Register\n2)Login\n3) Forgotton Credentials\n";
     int choice{0}; cin >> choice;
-    if( choice == 1) {}
+    if( choice == 1) 
+    {
+        try
+        {
+            regusr();
+        }
+        catch(const std::exception& e)
+        {
+            std::cerr << e.what() << '\n';
+        }
+        
+    }
     else if(choice == 2)
     {
         try
@@ -44,7 +57,15 @@ int home()
             cerr << e.what() << '\n';
         }
     }
+    else if(choice == 3) {frgt();}
+    else { cout << "invalid choice. "; home();}
     return 0;
+}
+
+
+int frgt()
+{
+    cout << "If You Forgot Your Credentials, Please Contact Admin at assadalee248@gmail.com. Ph: 123 \n"; return 0;
 }
 
 int welcome()
@@ -60,18 +81,30 @@ int regusr()
     cout << "1) Admin \n2)Doctor \n3) Patient\n"; 
     int choice{0}; cin >> choice;
     if(choice == 1) {regadmin();}
-    else if(choice == 2) {regdoc();}
-    else if(choice == 3) {regpat();}
+    else if(choice == 2) { regdoc(); }
+    else if(choice == 3) { regpat();}
     else
     {
         throw runtime_error("Invalid Choice! Program Exiting. \n");
     }
+    return 0;
 }
 
 int regadmin()
 {
+    cout << "Program Entered Regadmin." << endl;
     Admin obj;
-    obj.set();
+    obj.set(); obj.show(); return 0;
+}
+
+int regdoc()
+{
+    return 0;
+}
+
+int regpat()
+{
+    return 0;
 }
 
 int login()
@@ -103,7 +136,33 @@ int login()
 
 int adminL()
 {
-    cout << "Under Progress. \n"; login();
+    // cout << "Under Progress. \n"; login();
+    Admin temp;
+    cout << "Enter Username: "; string u; cin >> u;
+    cout << "Enter Password: "; string p; cin >> p;
+    fstream outfile("Admin.txt", ios::in|ios::app);
+    string usr, ps, line = " "; int index= 0; int old =0; string sbstr;
+    while(!outfile.eof())
+    {
+        outfile >> line;
+        for(int i{0}; i < 7; i++)
+        {
+            usr = ps;
+            index = line.find(",",index,line.size());
+            sbstr = line.substr(old,index);
+            old = index; sbstr = ps;
+            cout << endl << usr << "   " << ps << endl;
+        }
+    }
+    if(usr == u && ps == p) 
+    {
+        cout << "Success. !" << endl;
+    }
+    else 
+    {
+        cout << "Failed " << endl;
+    }
+    
     return 0;
 }
 
