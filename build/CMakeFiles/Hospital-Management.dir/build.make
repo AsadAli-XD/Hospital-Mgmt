@@ -73,15 +73,15 @@ CMakeFiles/Hospital-Management.dir/main.cpp.o: CMakeFiles/Hospital-Management.di
 CMakeFiles/Hospital-Management.dir/main.cpp.o: ../main.cpp
 CMakeFiles/Hospital-Management.dir/main.cpp.o: CMakeFiles/Hospital-Management.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/roxel/snow/coding/Hospital-Mgmt/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/Hospital-Management.dir/main.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Hospital-Management.dir/main.cpp.o -MF CMakeFiles/Hospital-Management.dir/main.cpp.o.d -o CMakeFiles/Hospital-Management.dir/main.cpp.o -c /home/roxel/snow/coding/Hospital-Mgmt/main.cpp
+	/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Hospital-Management.dir/main.cpp.o -MF CMakeFiles/Hospital-Management.dir/main.cpp.o.d -o CMakeFiles/Hospital-Management.dir/main.cpp.o -c /home/roxel/snow/coding/Hospital-Mgmt/main.cpp
 
 CMakeFiles/Hospital-Management.dir/main.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Hospital-Management.dir/main.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/roxel/snow/coding/Hospital-Mgmt/main.cpp > CMakeFiles/Hospital-Management.dir/main.cpp.i
+	/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/roxel/snow/coding/Hospital-Mgmt/main.cpp > CMakeFiles/Hospital-Management.dir/main.cpp.i
 
 CMakeFiles/Hospital-Management.dir/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Hospital-Management.dir/main.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/roxel/snow/coding/Hospital-Mgmt/main.cpp -o CMakeFiles/Hospital-Management.dir/main.cpp.s
+	/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/roxel/snow/coding/Hospital-Mgmt/main.cpp -o CMakeFiles/Hospital-Management.dir/main.cpp.s
 
 # Object files for target Hospital-Management
 Hospital__Management_OBJECTS = \

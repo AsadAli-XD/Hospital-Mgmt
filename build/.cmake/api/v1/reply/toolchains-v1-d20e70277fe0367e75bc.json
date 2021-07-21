@@ -5,19 +5,20 @@
 		{
 			"compiler" : 
 			{
-				"id" : "GNU",
+				"id" : "Clang",
 				"implicit" : 
 				{
 					"includeDirectories" : 
 					[
-						"/usr/lib/gcc/x86_64-pc-linux-gnu/11.1.0/include",
 						"/usr/local/include",
-						"/usr/lib/gcc/x86_64-pc-linux-gnu/11.1.0/include-fixed",
+						"/usr/lib/clang/12.0.1/include",
 						"/usr/include"
 					],
 					"linkDirectories" : 
 					[
-						"/usr/lib/gcc/x86_64-pc-linux-gnu/11.1.0",
+						"/lib64/gcc/x86_64-pc-linux-gnu/11.1.0",
+						"/lib64",
+						"/usr/lib64",
 						"/usr/lib",
 						"/lib"
 					],
@@ -31,8 +32,8 @@
 						"gcc_s"
 					]
 				},
-				"path" : "/usr/bin/cc",
-				"version" : "11.1.0"
+				"path" : "/bin/clang-12",
+				"version" : "12.0.1"
 			},
 			"language" : "C",
 			"sourceFileExtensions" : 
@@ -75,7 +76,7 @@
 						"gcc"
 					]
 				},
-				"path" : "/usr/bin/c++",
+				"path" : "/bin/c++",
 				"version" : "11.1.0"
 			},
 			"language" : "CXX",
