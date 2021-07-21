@@ -1,0 +1,37 @@
+												Corona Center Management Project.
+
+		Requirements: 
+
+I want this project on command line Interface. I Want its interface to be cleanly organized. Make this program to maintain record of Patients. Store Patient's data. Make & Store Doctor's Data. Make & Store Admin Data. I want a Login page at the beginning. Three users can enter. Admin, Doctor Or Patient. I want you to keep track of person by its ID No.
+I want you to keep track of beds in use. And a doctor has the option to "Declare Healthy" to a patient & This Patient is removed from record & center & Free bed count is increased by 1 Number. 
+Now we Talk about access Control. A patient can't modify anything. A doctor can modify a patient's status. An Admin can Modify Data of Admins, Doctors, Patients. But can't access "Declare healthy " option. In case, Someone forgets his login credentials, He or she should contact Admin Department for help. Good Luck With Your Project <3
+
+-------------------------------------------------------------------------------------------
+
+Planning:
+
+(1) Welcome Screen() { Will be executed only once at program start. }
+
+(2) Home() { This will be the home function. This will contain Login Page. }
+
+(3) Login Page() {This will have Option to Login For Admin, Doctor & Patient. }
+
+(4) 3 Homes() {These will be three different home functions for Admin, doctor & Patients. Each will have related 		stuff. Each of This fuction will have a logout option which will return us back to Main Home Fuction.}
+
+(5) Home Admin() { This will contain following fuctions:
+		View Admin's Data(); Modify AdminData();
+		view Doctor's Data(); Modify Doctor's Data();
+		View Patient's Data(); Modify patient's Data();
+		See Bedcount(); 
+		}
+
+(6) Home Doctor() {	This will contain Following Functions:
+		View Doctor's Data();
+		View Patient's Data(); Declare healthy ();
+		Write Report of Patient(); Patient Expense();
+}
+ (7) Home Patient() { This will contain	Following Functions: 
+ 		View Own Data();
+ 		view Own Report(); 
+ 		View Expense();
+ }
