@@ -4,32 +4,42 @@ using namespace std;
 class Doctor
 {
     private:
-    int id,age; string name,special,email, phone;
+    string info[8];
     public:
-    Doctor() {id = age = 0; name = special = email = phone = "N/A"; }
-    Doctor(int i, int a, string n, string s, string e, string p) 
-    {        id = i; age = a; name = n; special = s; email =e; phone = p;}
+    Doctor() {  for(int i = 0; i < 8; i++) { info[i] = "N/A"; } }
+    Doctor(string i, string a, string n, string e, string ph, string spec, string usr, string pass) 
+    {
+        info[0] = i;        info[1] = n; 
+        info[2] = a;        info[3] = e; 
+        info[4] = ph;        info[5] = spec; 
+        info[6] = usr;        info[7] = pass; 
+    }
     Doctor(Doctor &a) 
-    {id = a.id; age = a.age; name = a.name; special = a.special; email = a.email; phone = a.phone; }
+    {
+        for(int i = 0; i < 8; i++) {  info[i] = a.info[i];  }
+    }
     int set()
     {
-        cout << "ID: "; cin >> id; 
-        cout << "Name: "; cin.ignore(); getline(cin, name);
-        cout << "Age: "; cin >> age; 
-        cout << "Speciality: "; cin.ignore(); getline(cin, special);
-        cout << "Email: "; cin >> email;
-        cout << "Phone: "; cin.ignore();getline(cin,phone);
+        int n = 0;
+        cout << "ID: "; cin >> info[0]; 
+        cout << "Name: "; cin >> info[1]; 
+        cout << "Age: "; cin >> info[2];  
+        cout << "Email: "; cin >> info[3]; 
+        cout << "Phone: "; cin >> info[4]; 
+        cout << "Speciality: "; cin >> info[5];
+        cout << "Username: "; cin >> info[6];
+        cout << "Password: "; cin >> info[7];
+        cout << "\n\t Success !\n"; store();
+        return 0;
     }
-    int getI(int a)
-    {
-        if(a == 1) {return id;}
-        if(a == 2) {return age;}
-    }
-    string getS(string n) {
-        if(n == "name") { return name; }
-        else if(n == "special") {return  special;}
-        else if(n == "email") {return email;}
-        else if(n == "phone") { return phone; }
+    string get(string n) {
+        if(n == "id") {return info[0]; }
+        else if(n == "name")  { return info[1]; }
+        else if(n == "age")   { return info[2]; }
+        else if(n == "email") { return info[3]; }
+        else if(n == "phone") { return info[4]; }
+        else if(n == "user")  { return info[5]; }
+        else if(n == "pass")  { return info[6]; }
         else return "Invalid Parameters."; 
     }
     int store()
@@ -39,20 +49,55 @@ class Doctor
         if(!infile) {cout << "\t Can't open the file \"Doctors.txt\"."; cin.get(); return 0;}
         else
         {
-            if(id == 0 || age == 0 || name == "N/A") { cout << "Object Not Initialized properly.\n"; return 0;} 
-            infile << id << "," << name << "," << age << ","<< special << "," << email << "," << phone << endl;
-            return 1;
+            if(info[0] == "N/A" || info[2] == "N/A" || info[1] == "N/A") { cout << "Object Not Initialized properly.\n"; return 0;}
+            else
+            {
+                for(int i = 0; i <8; i++)
+                {
+                    infile << info[i] << "*";
+                }
+                infile << endl;
+                return 1;
+            }
         }
+        return 0;
+    }
+    int myPat()
+    {
+        cout << "\nIN Progress. \n"; cin.get();
         return 0;
     }
     const void show()
     {
-        cout << "ID: " << id << endl;
-        cout << "Name: " << name << endl;
-        cout << "Age: " << age << endl;
-        cout << "Speciality: " << special << endl;
-        cout << "Email: " << email << endl;
-        cout << "Phone: " << phone << endl;
+        cout << "ID:          " << info[0] << endl;
+        cout << "Name:        " << info[1] << endl;
+        cout << "Age:         " << info[2] << endl;
+        cout << "Email:       " << info[3] << endl;
+        cout << "Phone:       " << info[4] << endl;
+        cout << "Speciality:  " << info[5] << endl;
+    }
+
+    int readA()
+    {
+        fstream read("doctors.txt", ios::out| ios::in);
+        if(!read) {cerr << "\n\t Can't open \"doctors.txt\" file. \n"; return 0;}
+        else
+        {
+                int index = 0, l =0; string line;
+            while (!read.eof())
+            {
+                read >> line; 
+                for(int i = 0; i <8; i++)
+                {
+                    l = line.find("*", index);
+                    info[i] = line.substr(index, l-index);
+                    index = l+1;
+                }
+                show();
+            }
+            return 1;
+        }
+        return 0;
     }
 
 };

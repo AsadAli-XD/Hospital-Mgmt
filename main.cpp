@@ -1,5 +1,6 @@
 #include <bits/stdc++.h>
 #include "Admin.cpp"
+#include "doctor.cpp"
 using namespace std;
 
 //  Functions
@@ -13,6 +14,7 @@ int login();
 int adminL();
 int docL(); int patL();
 int adminPanel();
+int doctorPanel();
 
 
 
@@ -20,13 +22,13 @@ int adminPanel();
 
 int main()      // Main Execution.
 {
-    // welcome();
+    welcome();
     // Admin a;
     // a.show();
     // cout  << endl << a.gets("name") << endl;
     // a.set(); a.show();
-    adminL();
-    // home();
+    // adminL();
+    home();
 
     return 0;
 }
@@ -93,14 +95,16 @@ int regusr()    // Register User.
 
 int regadmin()      // Register As Admin.
 {
-    cout << "Program Entered Regadmin." << endl;
+    cout << "\n\n\t\tRegister As Admin\n\n" << endl;
     Admin obj;
     obj.set(); obj.show(); return 0;
 }
 
 int regdoc()    // Register As Doctor.
 {
-    cout << "In Progress. " << endl;
+    // fstream infile("doctors.txt", ios::out | ios::in | ios::app);
+    Doctor obj;
+    obj.set(); obj.show();
     return 0;
 }
 
@@ -162,7 +166,28 @@ int adminL()        // Login For Admin.
 
 int docL()      // Login For Doctor.
 {
-    cout << "Under Progress. \n"; login();
+    cout << "Enter Username: "; string u; cin >> u;
+    cout << "Enter Password: "; string p; cin >> p;
+    fstream snow("doctors.txt", ios::in);
+    if(!snow) { cerr << "\n\tCan't Open File \"doctors.txt\". \n"; home();}
+    else
+    {
+        string line, info[8]; int index = 0, length = 0;
+        while(!snow.eof())
+        {
+            snow >> line;
+            for(int i = 0; i <8; i++)
+            {
+                length = line.find("*", index);
+                info[i] = line.substr(index, length-index);
+                index = length +1;
+            }
+            if(info[6] == u && info[7] == p) 
+            { cout << "\n\tLogin Successful. \n"; doctorPanel(); return 1;}
+        }
+        cout << "\n\tLogin Failed. \n"; system("clear"); docL();
+        return 0;
+    }
     return 0;
 }
 
@@ -176,5 +201,12 @@ int patL()      // Login For Patient.
 int adminPanel()
 {
     cout << "Welcome To Admin Panel.";
+    return 0;
+}
+
+int doctorPanel()
+{
+    cout << "Welcome To Doctor Panel. "; 
+    cin.get();
     return 0;
 }
