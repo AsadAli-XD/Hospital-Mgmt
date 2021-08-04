@@ -34,13 +34,13 @@
 //     return 0;
 // }
 
-#include <bits/stdc++.h>
-#include "Admin.cpp"
+// #include <bits/stdc++.h>
+// #include "Admin.cpp"
 
-using namespace std;
+// using namespace std;
 
-int main()
-{
-    Admin a;
-    a.readA();
-}
+// int main()
+// {
+//     Admin a;
+//     a.readA();
+// }
