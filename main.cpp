@@ -12,25 +12,26 @@ int regusr();
 int login();
 int adminL();
 int docL(); int patL();
+int adminPanel();
 
 
 
 
 
-
-int main()
+int main()      // Main Execution.
 {
-    welcome();
+    // welcome();
     // Admin a;
     // a.show();
     // cout  << endl << a.gets("name") << endl;
     // a.set(); a.show();
-    home();
+    adminL();
+    // home();
 
     return 0;
 }
 
-int home()
+int home()      // Main Menu.
 {
     cout << "1)Register\n2)Login\n3) Forgotton Credentials\n";
     int choice{0}; cin >> choice;
@@ -63,19 +64,19 @@ int home()
 }
 
 
-int frgt()
+int frgt()      // Incase Forgot Credentials. 
 {
     cout << "If You Forgot Your Credentials, Please Contact Admin at assadalee248@gmail.com. Ph: 123 \n"; return 0;
 }
 
-int welcome()
+int welcome()   // Welcome Screen
 {
     cout << "\n\n\n\t\t\tWelcome To Corona Center Management Center. \n"; 
     cin.get(); system("clear");
     return 0;
 }
 
-int regusr()
+int regusr()    // Register User.
 {
     //- Option of Selecting b/w admin, doctor & patient. Register as whoever they want.
     cout << "1) Admin \n2)Doctor \n3) Patient\n"; 
@@ -90,24 +91,26 @@ int regusr()
     return 0;
 }
 
-int regadmin()
+int regadmin()      // Register As Admin.
 {
     cout << "Program Entered Regadmin." << endl;
     Admin obj;
     obj.set(); obj.show(); return 0;
 }
 
-int regdoc()
+int regdoc()    // Register As Doctor.
 {
+    cout << "In Progress. " << endl;
     return 0;
 }
 
-int regpat()
+int regpat()    // Register As Patient.
 {
+    cout << "In Progress. " << endl;
     return 0;
 }
 
-int login()
+int login()     // Login Function.
 {
     system("clear");
     cout << "\n\n\t\t\tSelect Your Role: \n";
@@ -134,48 +137,44 @@ int login()
     return 0;
 }
 
-int adminL()
+int adminL()        // Login For Admin.
 {
     // cout << "Under Progress. \n"; login();
-    Admin temp;
     cout << "Enter Username: "; string u; cin >> u;
     cout << "Enter Password: "; string p; cin >> p;
     fstream outfile("Admin.txt", ios::in|ios::app);
-    string usr, ps, line = " "; int index= 0; int old =0; string sbstr;
+    string line = " "; int index= 0, len = 0; string info[7];
     while(!outfile.eof())
     {
         outfile >> line;
         for(int i = 0; i < 7; i++)
         {
-            usr = ps;
-            index = line.find(",",index,line.length());
-            sbstr = line.substr(old,index);
-            old = index; sbstr = ps;
-            cout << endl << usr << "   " << ps << endl;
+            len = line.find("*", index);
+            info[i] = line.substr(index, len - index);
+            index = len+1;
         }
+        if(info[5] == u && info[6] == p) 
+        {cout << "\nLogin Successful.";  adminPanel(); return 0;} 
     }
-    if(usr == u && ps == p) 
-    {
-        cout << "Success. !" << endl;
-    }
-    else 
-    {
-        cout << "Failed " << endl;
-    }
-    
+    cout << "\nLogin Failed. \n"; system("clear"); adminL();
     return 0;
 }
 
-int docL()
+int docL()      // Login For Doctor.
 {
     cout << "Under Progress. \n"; login();
     return 0;
 }
 
-int patL()
+int patL()      // Login For Patient.
 {
     cout << "Under Progress. \n"; login();
     return 0;
 }
 
 
+int adminPanel()
+{
+    cout << "Welcome To Admin Panel.";
+    return 0;
+}

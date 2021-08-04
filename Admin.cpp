@@ -4,51 +4,62 @@ using namespace std;
 class Admin
 {
     private:
-    int id, age; string name, email, phone, username, pass;
+    string info[7]; //id,name,age,email,phone,username,pass;
     public:
     Admin()
     {
-        id = age = 0; name = email = phone = username = pass = "N/A";
+        for(int i = 0; i <7; i++) { info[i] = "N/A";}   // Loop Initializes all 6 cells as "N/A" & 7th "\0";
     }
-    Admin(int i, int a, string n, string mail, string ph, string usr, string ps)
+    Admin(string i, string a, string n, string mail, string ph, string usr, string ps)
     {
-        id = i; age = a; name = n; email = mail; phone = ph; username = usr; pass =ps;
+        info[0] = i; info[2] = a; info[1] = n; info[3] = mail; info[4] = ph; info[5] = usr; info[6] = ps;
+        //Starting with 0th cell. Storing all the info given in Parameters.
     }
-    Admin(Admin &a)
+
+    Admin(Admin &a) //Copy Constructor.
     {
-        id = a.id; age = a.age; name = a.name; email = a.email; phone = a.phone; username = a.username; pass = a.pass; 
+        for(int i = 0; i < 7; i++) { info[i]= a.info[1]; } // Loop copies all values of object given as Parameter.
     }
-    int set()
+
+    int set()   
     {
-        cout << "ID:"; cin >> id;
-        cout << "Name: "; cin.ignore(); getline(cin, name);
-        cout << "Age: "; cin >> age;
-        cout << "E-Mail: "; cin >> email;
-        cout << "Phone No. : "; cin >> phone;
-        cout << "Username: "; cin >> username; 
-        cout << "Password: "; cin >> pass;
+        cout << "ID:"; cin >> info[0];
+        cout << "Name: "; cin.ignore(); getline(cin, info[1]);
+        cout << "Age: "; cin >> info[2];
+        cout << "E-Mail: "; cin >> info[3];
+        cout << "Phone No. : "; cin >> info[4];
+        cout << "Username: "; cin >> info[5]; 
+        cout << "Password: "; cin >> info[6];
         cout << "\n\nSuccess. " << endl;
         store();
         return 0;
     }
     // Make Getter Functions & Make A Function to store data in admins.txt file. Also make a check for data.
-    int geti(int a) {if (a == 1) {return id;} else return age;}
-    string gets(string n) 
+    string get(string n) 
     {
-        if(n == "name") { return name;} else if(n == "email") { return email;}
-        else if(n == "phone") { return phone;}
-        else return "Invalid Parameters";
+        if (n == "id") {return info[0];} 
+        else if (n == "name") {return info[1];}
+        else if (n == "age") {return info[2];}
+        else if (n == "email") {return info[3];}
+        else if (n == "phone") {return info[4];}
+        else if (n == "user") {return info[5];}
+        else if (n == "pass") {return info[6];}
+        else { return "Invalid Parameter. ";}
     }
     int store()
     {
-        if(name == "N/A") { cout << "\tObject Not Initialized. It Can't be saved.\n";}
+        if(info[1] == "N/A") { cout << "\tObject Not Initialized. It Can't be saved.\n";}
         else
         {
             fstream infile;
-            infile.open("Admin.txt", ios::out|ios::ate);
+            infile.open("Admin.txt", ios::out|ios::app);
             if(!infile) { cout << "Unable to Open Admins File.\n"; return 0;}
             else{
-                infile << id << "," << name << "," << age << "," << email << "," << phone << ","<< username << "," << pass << endl;
+                for(int i = 0; i < 7; i++)
+                {
+                    infile << info[i] << "*";
+                }
+                infile << endl; 
                 return 1;
             }
         }
@@ -56,10 +67,34 @@ class Admin
     }
     const void show()
     {
-        cout << "ID: " << id << endl;
-        cout << "Name: " << name << endl;
-        cout << "Age: " << age << endl;
-        cout << "Email: " << email << endl;
-        cout << "Phone: " << phone << endl;
+        cout << "ID: " << info[0] << endl;
+        cout << "Name: " << info[1] << endl;
+        cout << "Age: " << info[2] << endl;
+        cout << "Email: " << info[3] << endl;
+        cout << "Phone: " << info[4] << endl;
     }
+
+int readA()
+{
+    fstream read;
+    read.open("Admin.txt", ios::out|ios::in);
+    if(!read) {cerr << "Can't Open Admin.txt file. ";}
+    else {
+        string line = " "; int index = 0; int len = 0;
+        while(!read.eof())
+        {
+            read >> line; cout << line << endl;
+            for(int i = 0; i < 7; i++)
+            {
+                len = line.find("*", index);
+                info[i] = line.substr(index, len-index);
+                index = len+1;
+            }
+            show(); cout << endl << endl;
+            read.close();
+        }
+    }
+    return 0;
+}
+
 };
