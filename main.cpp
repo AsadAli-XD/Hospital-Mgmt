@@ -1,6 +1,7 @@
 #include <bits/stdc++.h>
 #include "Admin.cpp"
 #include "doctor.cpp"
+#include "patient.cpp"
 using namespace std;
 
 //  Functions
@@ -15,6 +16,7 @@ int adminL();
 int docL(); int patL();
 int adminPanel();
 int doctorPanel();
+int patientPanel();
 
 
 
@@ -22,13 +24,14 @@ int doctorPanel();
 
 int main()      // Main Execution.
 {
-    welcome();
+    // welcome();
     // Admin a;
     // a.show();
     // cout  << endl << a.gets("name") << endl;
     // a.set(); a.show();
     // adminL();
     home();
+    // patL();
 
     return 0;
 }
@@ -110,7 +113,9 @@ int regdoc()    // Register As Doctor.
 
 int regpat()    // Register As Patient.
 {
-    cout << "In Progress. " << endl;
+    Patient obj;
+    obj.set(); obj.show(); cin.get();
+    system("clear");
     return 0;
 }
 
@@ -193,8 +198,29 @@ int docL()      // Login For Doctor.
 
 int patL()      // Login For Patient.
 {
-    cout << "Under Progress. \n"; login();
-    return 0;
+        cout << "Enter Username: "; string u; cin >> u;
+    cout << "Enter Password: "; string p; cin >> p;
+    fstream snow("patients.txt", ios::in);
+    if(!snow) { cerr << "ERROR: Can't Open Patients File. Please Try Again Later. \n"; home();}
+    else
+    {
+        string line, info[8]; int index = 0, length = 0;
+        while(!snow.eof())
+        {
+            snow >> line;
+            for(int i = 0; i <8; i++)
+            {
+                length = line.find("*", index);
+                info[i] = line.substr(index, length-index);
+                index = length +1;
+            }
+            if(info[6] == u && info[7] == p) 
+            { cout << "\n\tLogin Successful. \n"; patientPanel(); return 1;}
+        }
+        cout << "\n\tLogin Failed. \n"; system("clear"); patL();;
+        return 0;
+    }
+
 }
 
 
@@ -208,5 +234,12 @@ int doctorPanel()
 {
     cout << "Welcome To Doctor Panel. "; 
     cin.get();
+    return 0;
+}
+
+int patientPanel()
+{
+    cout << "\n\n\t\tWelcome TO Patient Panel; \n";
+    cin.ignore(); cin.get();
     return 0;
 }
