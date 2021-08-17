@@ -24,7 +24,7 @@ int patientPanel();
 
 int main()      // Main Execution.
 {
-    // welcome();
+    welcome();
     // Admin a;
     // a.show();
     // cout  << endl << a.gets("name") << endl;
@@ -220,13 +220,46 @@ int patL()      // Login For Patient.
         cout << "\n\tLogin Failed. \n"; system("clear"); patL();;
         return 0;
     }
-
+    return 0;
 }
 
 
 int adminPanel()
 {
-    cout << "Welcome To Admin Panel.";
+    // cout << "Welcome To Admin Panel.";
+    cout << "1) View Admin Data. \n";
+    cout << "2) View All Admin's Data. \n";
+    cout << "3) View Doctor's Data. \n";
+    cout << "4) View Patient's Data. \n";
+    cout << "5) Modify Patient's Data. \n";
+    cout << "6) Exit" << endl;
+    int choice; cin >> choice;
+    switch (choice)
+    {
+        case 1:
+            {
+                // Show Data of Current Admin.
+                
+            }
+            break;
+        case 2:
+            // Make a Function to Display The content of Admin's list.
+            break;
+        case 3:
+            // Make a function to Display Doctor's data.
+            break;
+        case 4:
+            // Make a Function to display Patient's Data & Modify It.
+            break;
+        case 5:
+            // Make a Function to Display Patient's Data & Modify its status only. 
+        case 6:
+            exit(0);
+    
+    default:
+        { cout << "\nInvalid Choice. \n"; adminPanel(); }
+        break;
+    }
     return 0;
 }
 

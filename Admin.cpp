@@ -97,4 +97,14 @@ int readA()
     return 0;
 }
 
+    int mod()
+    {
+        show();
+        cout << "1) Modify Your Data \n";
+        cout << "2) Exit \n";
+        int c; cin >> c; 
+        if(c == 1) { cout << "Under Progress. \n";}
+        else if( c == 2) { exit(0); }
+        return 0;
+    }
 };

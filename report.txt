@@ -1,0 +1,7 @@
+Project Progress Report
+
+1) Made Basic Project Body.
+2) Made functions to register users.
+3) Wrote users data.
+4) Made Login functions for Admin, Doctor & Patient.
+5) Made Dummy panel functions.
