@@ -5,3 +5,5 @@ Project Progress Report
 3) Wrote users data.
 4) Made Login functions for Admin, Doctor & Patient.
 5) Made Dummy panel functions.
+6) View Current Admin Data function now working.
+7) View All Admin's Data function now working.

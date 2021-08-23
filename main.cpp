@@ -274,16 +274,21 @@ int adminPanel()
             {
                 Admin snow;
                 snow.readA();
+                cin.ignore(); cin.get(); system("clear");
+                adminPanel(); return 0;
             }
             break;
         case 3:
             // Make a function to Display Doctor's data.
+            cout << "In Progress \n";
             break;
         case 4:
             // Make a Function to display Patient's Data & Modify It.
+            cout << "In Progress \n";
             break;
         case 5:
             // Make a Function to Display Patient's Data & Modify its status only. 
+            cout << "In Progress \n";
         case 6:
             exit(0);
     
