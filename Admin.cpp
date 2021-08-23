@@ -91,8 +91,8 @@ int readA()
                 index = len+1;
             }
             show(); cout << endl << endl;
-            read.close();
         }
+            read.close();
     }
     return 0;
 }

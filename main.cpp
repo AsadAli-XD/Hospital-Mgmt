@@ -4,6 +4,9 @@
 #include "patient.cpp"
 using namespace std;
 
+// Global Variables
+string id;
+
 //  Functions
 
 int welcome();
@@ -24,13 +27,14 @@ int patientPanel();
 
 int main()      // Main Execution.
 {
-    welcome();
+    // welcome();
     // Admin a;
     // a.show();
     // cout  << endl << a.gets("name") << endl;
     // a.set(); a.show();
     // adminL();
-    home();
+    // home();
+    adminL();
     // patL();
 
     return 0;
@@ -163,7 +167,8 @@ int adminL()        // Login For Admin.
             index = len+1;
         }
         if(info[5] == u && info[6] == p) 
-        {cout << "\nLogin Successful.";  adminPanel(); return 0;} 
+        {::id = info[0]; cout << "\nLogin Successful.\n";
+        system("clear");  adminPanel(); return 0;} 
     }
     cout << "\nLogin Failed. \n"; system("clear"); adminL();
     return 0;
@@ -239,11 +244,37 @@ int adminPanel()
         case 1:
             {
                 // Show Data of Current Admin.
-                
+                cout << ::id << endl << endl;
+                fstream read("Admin.txt", ios::in|ios::app);
+                string line = " "; int index = 0; int len = 0; string info[7];
+                while (!read.eof())
+                {
+                    read >> line;
+                    for(int i = 0; i < 7; i++)
+                    {
+                        len = line.find("*", index);
+                        info[i] = line.substr(index, len-index);
+                        index = len+1;
+                    }
+                    if(info[0] == ::id)
+                    {
+                        cout << "ID: " << info[0] << endl;
+                        cout << "Name: " << info[1] << endl;
+                        cout << "Age: " << info[2] << endl;
+                        cout << "Email: " << info[3] << endl;
+                        cout << "Phone: " << info[4] << endl;
+                        cin.ignore(); cin.get(); system("clear");
+                        adminPanel(); return 0;
+                    }
+                }
             }
             break;
         case 2:
             // Make a Function to Display The content of Admin's list.
+            {
+                Admin snow;
+                snow.readA();
+            }
             break;
         case 3:
             // Make a function to Display Doctor's data.
